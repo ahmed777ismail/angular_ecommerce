@@ -129,7 +129,9 @@
     </div>
 
     <button [disabled]="registerForm.invalid" class="btn-main ms-auto d-block">
+      <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
       Register
     </button>
+    <p *ngIf="msgError" class="alert alert-danger">{{ msgError }}</p>
   </form>
 </section>
