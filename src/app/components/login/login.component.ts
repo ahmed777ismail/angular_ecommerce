@@ -1,6 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -10,16 +15,25 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private AuthService_: AuthService, private Router_: Router) {}
+  constructor(
+    private AuthService_: AuthService,
+    private Router_: Router,
+    private _FormBuilder: FormBuilder
+  ) {}
 
   msgError: string = '';
   isLoading: boolean = false;
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, [
-      Validators.required,
-      Validators.pattern(/^[A-z][a-z0-9]{6,9}$/),
-    ]),
+
+  // loginForm: FormGroup = new FormGroup({
+  //   email: new FormControl(null, [Validators.required, Validators.email]),
+  //   password: new FormControl(null, [ Validators.required,Validators.pattern(/^[A-z][a-z0-9]{6,9}$/),]),});
+
+  loginForm: FormGroup = this._FormBuilder.group({
+    email: [null, [Validators.required, Validators.email]],
+    password: [
+      null,
+      [Validators.required, Validators.pattern(/^[A-z][a-z0-9]{6,9}$/)],
+    ],
   });
 
   handleForm(): void {
@@ -40,6 +54,8 @@ export class LoginComponent {
           this.msgError = err.error.message;
         },
       });
+    } else {
+      this.loginForm.markAllAsTouched();
     }
   }
 }

@@ -20,6 +20,8 @@ import { BlankLayoutComponent } from './components/blank-layout/blank-layout.com
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
