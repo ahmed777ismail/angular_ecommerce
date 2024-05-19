@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Product } from 'src/app/shared/interfaces/product';
 import { EcomdataService } from 'src/app/shared/services/ecomdata.service';
 
@@ -14,6 +15,18 @@ export class DetailsComponent implements OnInit {
     private _EcomdataService: EcomdataService
   ) {}
 
+  productSlider: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    autoplay: true,
+    items: 1,
+    nav: true,
+  };
   productDetails: Product = {} as Product;
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({

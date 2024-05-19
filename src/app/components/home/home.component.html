@@ -1,3 +1,50 @@
+<!-- main slider -->
+<section>
+  <div class="row g-0">
+    <div class="col-md-10">
+      <owl-carousel-o [options]="mainSlider">
+        <ng-template carouselSlide>
+          <img
+            src="./assets/images/main-slider-1.jpeg"
+            class="w-100"
+            height="400"
+            alt=""
+        /></ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./assets/images/main-slider-2.jpeg"
+            class="w-100"
+            height="400"
+            alt=""
+        /></ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./assets/images/main-slider-3.jpeg"
+            class="w-100"
+            height="400"
+            alt=""
+        /></ng-template>
+      </owl-carousel-o>
+    </div>
+
+    <div class="col-md-2">
+      <img
+        src="../../../assets/images/slide-1.jpeg"
+        height="200"
+        class="w-100"
+        alt=""
+      />
+      <img
+        src="../../../assets/images/slide-2.jpeg"
+        class="w-100"
+        height="200"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
 <section class="my-3">
   <owl-carousel-o [options]="categoriesSliderOption">
     <ng-container *ngFor="let item of categories">
@@ -15,7 +62,7 @@
     </ng-container>
   </owl-carousel-o>
 </section>
-
+<!-- products -->
 <section class="my-4">
   <h2>pupular products</h2>
   <div class="row g-4">
@@ -23,11 +70,13 @@
       <div class="product">
         <div class="p-2 cursor-pointer" [routerLink]="['/details', item._id]">
           <img [src]="item.imageCover" class="w-100" [alt]="item.title" />
-          <h3 class="h6">{{ item.category.name }}</h3>
-          <h4 class="h6">{{ item.title.split(" ").slice(0, 2).join(" ") }}</h4>
+          <h3 class="h6">{{ item.category.name | uppercase | buy }}</h3>
+          <h4 class="h6">
+            {{ item.title.split(" ").slice(0, 2).join(" ") | termText : 2 }}
+          </h4>
 
           <div class="d-flex align-items-center justify-content-between">
-            <span>{{ item.price }} EGP</span>
+            <span>{{ item.price | currency }} </span>
             <div>
               <i class="fas fa-star rating-color"></i>
               <span class="text-muted">{{ item.ratingsAverage }}</span>

@@ -10,7 +10,7 @@ export interface Product {
   quantity: number;
   price: number;
   imageCover: string;
-  category: Category;
+  category: { name: string };
   brand: Brand;
   ratingsAverage: number;
   createdAt: string;

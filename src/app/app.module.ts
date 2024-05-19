@@ -22,6 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BuyPipe } from './buy.pipe';
+import { TermTextPipe } from './term-text.pipe';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NavAuthComponent,
     AuthLayoutComponent,
     BlankLayoutComponent,
+    BuyPipe,
+    TermTextPipe,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

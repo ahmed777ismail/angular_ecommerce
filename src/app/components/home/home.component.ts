@@ -40,6 +40,18 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
+  mainSlider: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    autoplay: true,
+    items: 1,
+    nav: true,
+  };
 
   ngOnInit(): void {
     //get all products
