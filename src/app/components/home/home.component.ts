@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
 
   categories: any[] = [];
 
+  searchTerm: string = '';
+
   categoriesSliderOption: OwlOptions = {
     loop: true,
     mouseDrag: true,

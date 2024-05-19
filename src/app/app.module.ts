@@ -17,7 +17,7 @@ import { NavBlankComponent } from './components/nav-blank/nav-blank.component';
 import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,6 +54,7 @@ import { SearchPipe } from './search.pipe';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

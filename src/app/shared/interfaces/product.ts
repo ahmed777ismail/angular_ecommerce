@@ -38,3 +38,21 @@ export interface Brand {
   slug: string;
   image: string;
 }
+
+export interface Product {
+  imageCover: string;
+  _id: string;
+  title: string;
+  category: { name: string };
+  price: number;
+  ratingsAverage: number;
+}
+
+// export interface Product {
+//   imageCover: string;
+//   _id: string;
+//   title: string;
+//   category: { name: string };
+//   price: number;
+//   ratingsAverage: number;
+// }
