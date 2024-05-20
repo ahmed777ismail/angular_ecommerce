@@ -25,7 +25,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BuyPipe } from './buy.pipe';
 import { TermTextPipe } from './term-text.pipe';
 import { SearchPipe } from './search.pipe';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +55,7 @@ import { SearchPipe } from './search.pipe';
     BrowserAnimationsModule,
     CarouselModule,
     FormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

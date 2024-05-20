@@ -1,1 +1,42 @@
-<p>cart works!</p>
+<section class="w-75 mx-auto bg-main-light p-3 rounded-3 my-2">
+  <h1>shop cart</h1>
+  <p class="text-main">
+    total price: {{ cartDetails.totalCartPrice | currency }}
+  </p>
+
+  <div class="row border_bottom pb-2" *ngFor="let item of cartDetails.products">
+    <div class="col-md-1">
+      <img [src]="item.product.imageCover" class="w-100" alt="" />
+    </div>
+    <div class="col-md-11">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h3 class="h5">{{ item.product.title }}</h3>
+          <p class="text-main m-0">price : {{ item.price }}</p>
+
+          <button
+            class="btn p-0 m-0"
+            (click)="removeCartItems(item.product._id)"
+          >
+            <i class="fa-regular fa-trash-can"></i> Remove
+          </button>
+        </div>
+        <div>
+          <button
+            (click)="changeCount(item.product._id, item.count + 1)"
+            class="btn border border-success"
+          >
+            +
+          </button>
+          <span> {{ item.count }} </span>
+          <button
+            (click)="changeCount(item.product._id, item.count - 1)"
+            class="btn border border-success"
+          >
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

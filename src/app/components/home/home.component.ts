@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/shared/interfaces/product';
+import { CartService } from 'src/app/shared/services/cart.service';
 import { EcomdataService } from 'src/app/shared/services/ecomdata.service';
 
 @Component({
@@ -9,13 +11,31 @@ import { EcomdataService } from 'src/app/shared/services/ecomdata.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private _EcomdataService: EcomdataService) {}
+  constructor(
+    private _EcomdataService: EcomdataService,
+    private _CartService: CartService,
+    private _ToastrService: ToastrService
+  ) {}
 
   products: Product[] = [];
 
   categories: any[] = [];
 
   searchTerm: string = '';
+
+  addCart(id: string): void {
+    this._CartService.addToCart(id).subscribe({
+      next: (response) => {
+        console.log(response);
+
+        this._ToastrService.success(response.message);
+      },
+
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 
   categoriesSliderOption: OwlOptions = {
     loop: true,
