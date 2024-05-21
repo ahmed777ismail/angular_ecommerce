@@ -97,7 +97,7 @@
         <p *ngIf="registerForm.get('rePassword')?.getError('required')">
           rePassword is required
         </p>
-        <p *ngIf="registerForm.get('rePassword')?.getError('pattern')">
+        <p *ngIf="registerForm.get('rePassword')?.getError('missMatch')">
           Password confirmation is incorrect
         </p>
       </div>

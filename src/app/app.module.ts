@@ -19,13 +19,16 @@ import { AuthLayoutComponent } from './components/auth-layout/auth-layout.compon
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BuyPipe } from './buy.pipe';
 import { TermTextPipe } from './term-text.pipe';
 import { SearchPipe } from './search.pipe';
 import { ToastrModule } from 'ngx-toastr';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AllordersComponent } from './components/allorders/allorders.component';
+import { MyHttpInterceptor } from './my-http.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +49,8 @@ import { ToastrModule } from 'ngx-toastr';
     BuyPipe,
     TermTextPipe,
     SearchPipe,
+    CheckoutComponent,
+    AllordersComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,13 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

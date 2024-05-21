@@ -12,6 +12,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { authGuard } from './shared/guards/auth.guard';
 import { DetailsComponent } from './components/details/details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AllordersComponent } from './components/allorders/allorders.component';
 
 const routes: Routes = [
   {
@@ -22,7 +24,14 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
+      {
+        path: 'setting',
+        loadChildren: () =>
+          import('./setting/setting.module').then((m) => m.SettingModule),
+      },
       { path: 'Products', component: ProductsComponent },
+      { path: 'allorders', component: AllordersComponent },
+      { path: 'checkout/:id', component: CheckoutComponent },
       { path: 'details/:id', component: DetailsComponent },
       { path: 'Brands', component: BrandsComponent },
       { path: 'Categories', component: CategoriesComponent },
